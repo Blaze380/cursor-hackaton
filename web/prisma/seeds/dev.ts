@@ -10,12 +10,17 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
   console.log('Running dev seed...');
 
-  // Example:
-  // await prisma.user.create({
-  //   data: { email: 'dev@example.com', name: 'Dev User' },
-  // });
+  const bairros = ['Polana', 'Mavalane', 'Baixa', 'Malhangalene'];
 
-  console.log('Dev seed completed.');
+  for (const nome of bairros) {
+    await prisma.bairro.upsert({
+      where: { nome },
+      create: { nome },
+      update: {},
+    });
+  }
+
+  console.log(`Dev seed completed (${bairros.length} bairros).`);
 }
 
 main()

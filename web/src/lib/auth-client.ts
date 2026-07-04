@@ -21,12 +21,5 @@ export const authClient = createAuthClient({
     usernameClient(),
     anonymousClient(),
     adminClient(),
-    organizationClient(),
-    lastLoginMethodClient(lastLoginMethodClientOptions),
-    multiSessionClient(),
-    magicLinkClient(),
-    emailOTPClient(),
-    phoneNumberClient(),
-    twoFactorClient(),
   ],
 });

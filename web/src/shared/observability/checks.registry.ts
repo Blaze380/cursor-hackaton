@@ -6,6 +6,8 @@ import { serviceCheck } from './checks/service.check';
 import { databaseCheck } from './checks/database.check';
 
 import { smtpCheck } from './checks/smtp.check';
+
+import { authUiRoutesCheck } from './checks/auth-ui-routes.check';
 // forge:checks-end
 
 export const integrationChecks: IntegrationCheck[] = [
@@ -15,5 +17,7 @@ export const integrationChecks: IntegrationCheck[] = [
   databaseCheck,
 
   smtpCheck,
+
+  authUiRoutesCheck,
 // forge:registry-end
 ];
