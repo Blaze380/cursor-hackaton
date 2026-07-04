@@ -1,5 +1,7 @@
 import { ListaBairros } from '@/components/lista-bairros';
+import { AppShell } from '@/components/alerta/app-shell';
 import { SensorWorker } from '@/components/sensor-worker';
+import { getSession } from '@/lib/auth-session';
 import { prisma } from '@/lib/prisma';
 
 export const metadata = {
@@ -8,14 +10,24 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const bairros = await prisma.bairro.findMany({
-    orderBy: { nome: 'asc' },
-  });
+  const [bairros, session] = await Promise.all([
+    prisma.bairro.findMany({ orderBy: { nome: 'asc' } }),
+    getSession(),
+  ]);
+
+  const subscritoIds = session?.user?.id
+    ? (
+        await prisma.subscricao.findMany({
+          where: { userId: session.user.id },
+          select: { bairroId: true },
+        })
+      ).map((s) => s.bairroId)
+    : [];
 
   return (
-    <main className="bg-background min-h-screen">
+    <AppShell>
       <SensorWorker />
-      <ListaBairros bairros={bairros} />
-    </main>
+      <ListaBairros bairros={bairros} subscritoIds={subscritoIds} />
+    </AppShell>
   );
 }

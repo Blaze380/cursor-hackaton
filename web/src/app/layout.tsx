@@ -1,10 +1,32 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+import { PwaRegistrar } from '@/components/pwa/pwa-registrar';
 import { Providers } from '@/providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Forge Web',
-  description: 'Forge Next.js web application',
+  title: 'Alerta Maputo',
+  description: 'Sistema de alerta precoce de cheias — monitorização por bairro',
+  applicationName: 'Alerta Maputo',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Alerta Maputo',
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0284c7',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -13,9 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
+    <html lang="pt">
+      <body className="antialiased">
+        <Providers>
+          <PwaRegistrar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
