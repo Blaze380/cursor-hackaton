@@ -1,0 +1,5 @@
+{
+  "$schema": "https://forge.dev/schema.json",
+  "type": "nextjs",
+  "registry": "https://forge-blaze.vercel.app"
+}

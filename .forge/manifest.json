@@ -1,0 +1,30 @@
+{
+  "version": "1",
+  "project": "cursor-hackaton",
+  "apps": {
+    "cursor-hackaton": {
+      "registryApp": "web",
+      "type": "nextjs",
+      "path": "web",
+      "installed": {
+        "auth-client": {
+          "version": "1.0.0",
+          "installedAt": "2026-07-04T11:50:13.229Z"
+        },
+        "prisma": {
+          "version": "1.0.0",
+          "installedAt": "2026-07-04T11:50:13.241Z"
+        },
+        "email": {
+          "version": "1.0.0",
+          "installedAt": "2026-07-04T11:50:13.259Z",
+          "variant": "smtp"
+        },
+        "tanstack": {
+          "version": "1.0.0",
+          "installedAt": "2026-07-04T11:50:13.265Z"
+        }
+      }
+    }
+  }
+}

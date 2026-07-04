@@ -1,0 +1,10 @@
+node_modules
+.git
+.next
+out
+coverage
+.env
+.env.*
+!.env.example
+*.log
+.pnpm-store
